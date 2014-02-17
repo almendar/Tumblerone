@@ -62,7 +62,7 @@ object Tumblerone {
 
   def main(args:Array[String]) {
     val blogName = "nba"
-    val listOfUrl = generateTumblrBlogPages(blogName).take(100).toList.par.flatMap { downloadHtml(_) }.flatMap(extractImageUrl(_))
+    val listOfUrl = generateTumblrBlogPages(blogName).take(1).toList.par.flatMap { downloadHtml(_) }.flatMap(extractImageUrl(_))
       val resultDir = Paths.get(".").resolve(blogName)
       val downloader = new FileDownloader(resultDir) with ConsoleLogger
       listOfUrl.foreach(downloader.download(_))
